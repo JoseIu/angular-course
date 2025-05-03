@@ -1,0 +1,33 @@
+<div class="form">
+  <label for="name" class="form__label">
+    Name:
+    <input
+      class="form__input"
+      type="text"
+      name="name"
+      id="name"
+      placeholder="name..."
+      [value]="name()"
+      (change)="name.set(txtName.value)"
+      #txtName
+      required
+    />
+  </label>
+
+  <label for="power" class="form__label">
+    Power:
+    <input
+      class="form__input"
+      type="number"
+      name="power"
+      id="power"
+      placeholder="power..."
+      [value]="power()"
+      (change)="power.set(+txtPower.value)"
+      #txtPower
+      required
+    />
+  </label>
+
+  <button class="form__button" (click)="onAddCharacter()">Add</button>
+</div>

@@ -1,0 +1,55 @@
+<section class="wrapper">
+  <h1>Dragon ball</h1>
+  <div class="dragonball-page__content">
+    <div class="form">
+      <label for="name" class="form__label">
+        Name:
+        <input
+          class="form__input"
+          type="text"
+          name="name"
+          id="name"
+          placeholder="name..."
+          [value]="name()"
+          (change)="name.set(txtName.value)"
+          #txtName
+          required
+        />
+      </label>
+
+      <label for="power" class="form__label">
+        Power:
+        <input
+          class="form__input"
+          type="number"
+          name="power"
+          id="power"
+          placeholder="power..."
+          [value]="power()"
+          (change)="power.set(+txtPower.value)"
+          #txtPower
+          required
+        />
+      </label>
+
+      <button class="form__button" (click)="onAddCharacter()">Add</button>
+    </div>
+
+    <section>
+      <h2>Dragon Ball list</h2>
+      <ul class="characters-list">
+        @for (character of characters(); track character.id) {
+        @if(character.power > 500) {
+        <li class="character">
+          <span class="character__name">{{ character.name }}</span>
+          <strong
+            [class.character__power--danger]="character.power > 9000"
+            class="character__power"
+            >({{ character.power }})</strong
+          >
+        </li>
+        } }
+      </ul>
+    </section>
+  </div>
+</section>

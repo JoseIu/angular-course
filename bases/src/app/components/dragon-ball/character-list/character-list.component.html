@@ -1,0 +1,13 @@
+<ul class="characters-list">
+  @for (character of characters(); track character.id) {
+    @if(character.power > 500) {
+      <li class="character">
+        <span class="character__name">{{ character.name }}</span>
+        <strong
+          [class.character__power--danger]="character.power > 9000"
+          class="character__power"
+          >({{ character.power }})</strong
+        >
+      </li>
+  } }
+</ul>

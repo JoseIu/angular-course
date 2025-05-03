@@ -1,0 +1,12 @@
+<section class="wrapper">
+  <h1>Dragon ball super</h1>
+  <div class="dragonball-page__content">
+    <daragonball-add-character (newCharacter)="dragonBallServie.onAddCharacter($event)"/>
+
+    <section>
+      <h2>Dragon Ball list</h2>
+
+      <dragonball-character-list [characters]="dragonBallServie.characters()" />
+    </section>
+  </div>
+</section>

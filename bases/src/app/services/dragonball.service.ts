@@ -1,53 +1,28 @@
-import { Injectable, signal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 import { Character } from '../types/Character.i';
 
+const loadFromLocalStorage = (): Character[] => {
+  const characters = JSON.parse(
+    localStorage.getItem('characters') || '[]'
+  ) as Character[];
+
+  return characters;
+};
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DragonBallService {
+  characters = signal<Character[]>(loadFromLocalStorage());
 
-  characters = signal<Character[]>([
-    {
-      id: 1,
-      name: 'Goku',
-      power: 9001,
-    },
-    {
-      id: 2,
-      name: 'Vegeta',
-      power: 8500,
-    },
-    {
-      id: 3,
-      name: 'Gohan',
-      power: 7000,
-    },
-    {
-      id: 4,
-      name: 'Piccolo',
-      power: 6000,
-    },
-    {
-      id: 5,
-      name: 'Krillin',
-      power: 5000,
-    },
-    {
-      id: 6,
-      name: 'Bulma',
-      power: 1000,
-    },
-    {
-      id: 7,
-      name: 'Yamcha',
-      power: 500,
-    },
-  ]);
+  saveToLocalStorage = effect(() => {
+    const characters = this.characters();
+    localStorage.setItem('characters', JSON.stringify(characters));
+  });
 
-  onAddCharacter(newCharacter:Character) {
-    if(!newCharacter) return
+  onAddCharacter(newCharacter: Character) {
+    if (!newCharacter) return;
 
     this.characters.update((prev) => [...prev, newCharacter]);
   }
 }
-

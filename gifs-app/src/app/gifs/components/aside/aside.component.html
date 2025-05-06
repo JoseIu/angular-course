@@ -1,0 +1,22 @@
+<aside
+  class="h-screen bg-zinc-900 w-full text-zinc-300 py-4 px-6 flex flex-col gap-8"
+>
+  <app-logo />
+
+  <ul class="flex flex-col gap-4">
+    @for (menu of menuOptions; track menu.route) {
+    <li>
+      <a
+        class="flex items-center gap-4 px-4 py-2.5 hover:text-rose-500 transition-colors duration-200"
+        routerLink="{{ menu.route }}"
+        routerLinkActive="text-rose-500 bg-zinc-800 rounded-md"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <ng-container *ngComponentOutlet="menu.icon"></ng-container>
+
+        {{ menu.label }}</a
+      >
+    </li>
+    }
+  </ul>
+</aside>

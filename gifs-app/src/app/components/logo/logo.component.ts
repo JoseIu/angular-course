@@ -1,9 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-logo',
   imports: [],
   templateUrl: './logo.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LogoComponent { }
+export class LogoComponent {
+  env = environment;
+}

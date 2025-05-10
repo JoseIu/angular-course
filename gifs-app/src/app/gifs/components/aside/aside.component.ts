@@ -1,6 +1,12 @@
 import { NgComponentOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Type,
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { GifsService } from '@app/gifs/services/gif.service';
 import { LogoComponent } from '../../../components/logo/logo.component';
 import { SearchIconComponent } from '../../../components/search-icon/search-icon.component';
 import { TredingIconComponent } from '../../../components/treding-icon/treding-icon.component';
@@ -33,4 +39,6 @@ export class AsideComponent {
       route: '/dashboard/search',
     },
   ];
+
+  gifsService = inject(GifsService);
 }

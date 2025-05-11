@@ -1,6 +1,10 @@
 <div class="gallery">
   @for (image of images(); track image) {
 
-  <img class="max-w-full rounded-lg" src="{{ image.url }}" alt="" />
+  <img
+    class="gallery__image max-w-full rounded-lg"
+    src="{{ image.url }}"
+    alt=""
+  />
   }
 </div>
